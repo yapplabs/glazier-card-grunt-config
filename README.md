@@ -12,7 +12,7 @@ You will need your package.json to add dependencies for the grunt task libraries
 
 Add this to your package.json to include this module:
 
-    "glazier-card-grunt-config": "git://github.com/yapplabs/glazier-card-grunt-config.git#master"
+    npm install --save-dev glazier-card-grunt-config
 
 Your card's package.json should contain a `glazierConfig` options object.  The `consumes`, `assetHost`, `shortName` and `repositoryName` keys are required.  An example looks like:
 
