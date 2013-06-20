@@ -2,6 +2,8 @@ function config(configFileName) {
   return require('./configurations/' + configFileName);
 }
 
+var registerDevManifestGruntTask = require('./tasks/dev_manifest.js')
+
 var config = {
   env: process.env,
   s3: config('s3'),
@@ -21,7 +23,8 @@ module.exports = {
     return config;
   },
   registerSharedTasks: function(grunt) {
-    grunt.registerTask('build', ['clean', 'ember_handlebars', 'transpile', 'jshint', 'copy:main', 'concat']);
+    registerDevManifestGruntTask(grunt);
+    grunt.registerTask('build', ['clean', 'ember_handlebars', 'transpile', 'jshint', 'copy:main', 'concat', 'dev_manifest']);
     grunt.registerTask('manifest', ['build', 'md5', 'copy:manifest']);
     grunt.registerTask('deploy', ['manifest', 's3']);
     grunt.registerTask('default', ['build']);
