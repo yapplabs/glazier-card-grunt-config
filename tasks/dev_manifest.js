@@ -16,6 +16,8 @@ module.exports = function(grunt){
     var manifest = {
       name: repositoryName,
       consumes: grunt.config.process('<%= pkg.glazierConfig.consumes %>'),
+      provides: grunt.config.process('<%= pkg.glazierConfig.provides %>'),
+      ui: grunt.config.process('<%= pkg.glazierConfig.ui %>'),
       cardUrl: makeAssetUrl('card.js'),
       url: makeAssetUrl('manifest.json'), // The url value is only used by the grunt ingestCard task, and is not used in production
       assets: assets
