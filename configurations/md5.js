@@ -1,5 +1,5 @@
 var grunt = require('grunt');
-
+var _ = require('lodash');
 var CARD_URL_REGEXP = /card-[\w\d]{32}\.js$/;
 
 module.exports = {
@@ -17,17 +17,19 @@ module.exports = {
       keepBasename: true,
       keepExtension: true,
       after: function (fileChanges, options) {
-        var manifest, key, file, from, to, repositoryName, assetHost;
+        var manifest, sharedManifest, key, file, from, to, repositoryName, assetHost;
 
         repositoryName = grunt.config.process('<%= pkg.glazierConfig.repositoryName %>');
         assetHost = grunt.config.process('<%= pkg.glazierConfig.assetHost %>');
 
+        sharedManifest = require('../shared_manifest.js')(grunt);
+
         manifest = {
-          name: repositoryName,
-          consumes: grunt.config.process('<%= pkg.glazierConfig.consumes %>'),
           cardUrl: '',
           assets: {}
         };
+
+        manifest = _.extend({}, manifest, sharedManifest);
 
         for (key in fileChanges) {
           file = fileChanges[key];

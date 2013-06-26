@@ -8,7 +8,7 @@ Shared grunt configuration for glazier cards.
 You will need your package.json to add dependencies for the grunt task libraries being used:
 
     npm install --save-dev grunt-contrib-jshint grunt-es6-module-transpiler grunt-contrib-concat grunt-contrib-clean grunt-contrib-copy
-    npm install --save-dev grunt-ember-handlebars grunt-contrib-handlebars grunt-md5 grunt-s3
+    npm install --save-dev grunt-ember-handlebars grunt-contrib-handlebars grunt-md5 grunt-s3 lodash
 
 Add this to your package.json to include this module:
 

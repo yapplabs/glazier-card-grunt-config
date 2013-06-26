@@ -6,6 +6,6 @@
   "author"        : "Ray Cohen <ray@yapp.us>",
   "repository"    : {"type": "git", "url": "git@github.com:yapplabs/glazier-card-grunt-config.git"},
   "main"          : "glazier-card-grunt-config.js",
-  "version"       : "0.0.4",
+  "version"       : "0.0.5",
   "license"       : "MIT"
 }
