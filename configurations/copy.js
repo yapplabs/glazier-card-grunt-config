@@ -3,8 +3,26 @@ module.exports = {
     files: [
       {
         expand: true,
-        src: ['app/**', 'css/**', '!**/*.js'],
+        src: ['app/**', 'css/**', '!test/**', '!**/*.js'],
         dest: 'tmp'
+      }
+    ]
+  },
+  test: {
+    files: [
+      {
+        expand: true,
+        src: ['test/**', '!test/**/*.js'],
+        dest: 'tmp'
+      }
+    ]
+  },
+  testVendor: {
+    files: [
+      {
+        expand: true,
+        src: ['test/vendor/**/*'],
+        dest: 'dist/dev/<%= pkg.glazierConfig.shortName %>'
       }
     ]
   },

@@ -13,6 +13,7 @@ var config = {
   concat: config('concat'),
   jshint: config('jshint'),
   transpile: config('transpile'),
+  qunit: config('qunit'),
   ember_handlebars: config('ember_handlebars')
 };
 
@@ -24,9 +25,10 @@ module.exports = {
   },
   registerSharedTasks: function(grunt) {
     registerDevManifestGruntTask(grunt);
-    grunt.registerTask('build', ['clean', 'ember_handlebars', 'transpile', 'jshint', 'copy:main', 'concat', 'dev_manifest']);
+    grunt.registerTask('build', ['clean', 'ember_handlebars', 'transpile', 'jshint', 'copy:main', 'copy:test', 'copy:testVendor', 'concat', 'dev_manifest']);
     grunt.registerTask('manifest', ['build', 'md5', 'copy:manifest']);
     grunt.registerTask('deploy', ['manifest', 's3']);
+    grunt.registerTask('test', ['build', 'qunit:all']);
     grunt.registerTask('default', ['build']);
   }
 };

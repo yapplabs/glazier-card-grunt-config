@@ -1,5 +1,5 @@
 var grunt = require('grunt');
-var _ = require('lodash');
+var _ = grunt.util._;
 var CARD_URL_REGEXP = /card-[\w\d]{32}\.js$/;
 
 module.exports = {

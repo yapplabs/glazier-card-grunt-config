@@ -1,4 +1,4 @@
-var _ = require('lodash');
+var _ = require('grunt').util._;
 
 module.exports = function(grunt){
   grunt.registerTask('dev_manifest', 'creates manifest.json to be used in development', function() {

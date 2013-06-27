@@ -7,6 +7,14 @@ module.exports = {
       dest: 'tmp/'
     }]
   },
+  tests: {
+    type: "amd",
+    files: [{
+      expand: true,
+      src: ['test/**/*.js', '!test/vendor/**/*.js'],
+      dest: 'tmp/'
+    }]
+  },
 
   templates: {
     type: "amd",
