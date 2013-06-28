@@ -14,7 +14,8 @@ var config = {
   jshint: config('jshint'),
   transpile: config('transpile'),
   qunit: config('qunit'),
-  ember_handlebars: config('ember_handlebars')
+  ember_handlebars: config('ember_handlebars'),
+  watch: config('watch')
 };
 
 module.exports = {
@@ -29,6 +30,7 @@ module.exports = {
     grunt.registerTask('manifest', ['build', 'md5', 'copy:manifest']);
     grunt.registerTask('deploy', ['manifest', 's3']);
     grunt.registerTask('test', ['build', 'qunit:all']);
+    grunt.registerTask('autotest', ['watch']);
     grunt.registerTask('default', ['build']);
   }
 };
