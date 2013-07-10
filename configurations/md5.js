@@ -6,7 +6,7 @@ module.exports = {
   compile: {
     files: [{
       expand: true,
-      cwd: "dist/dev/<%= pkg.glazierConfig.shortName %>",
+      cwd: "dist/dev/<%= pkg.name %>",
       src: ['**/*'],
       dest: 'tmp/md5/',
       filter: 'isFile'
@@ -17,9 +17,9 @@ module.exports = {
       keepBasename: true,
       keepExtension: true,
       after: function (fileChanges, options) {
-        var manifest, sharedManifest, key, file, from, to, repositoryName, assetHost;
+        var manifest, sharedManifest, key, file, from, to, name, assetHost;
 
-        repositoryName = grunt.config.process('<%= pkg.glazierConfig.repositoryName %>');
+        name = grunt.config.process('<%= pkg.name %>');
         assetHost = grunt.config.process('<%= pkg.glazierConfig.assetHost %>');
 
         sharedManifest = require('../shared_manifest.js')(grunt);
@@ -35,7 +35,7 @@ module.exports = {
           file = fileChanges[key];
 
           from = file.oldPath.replace(/^dist\/dev/, '/cards');
-          to = file.newPath.replace(/^tmp\/md5/, assetHost + '/assets/cards/' + repositoryName + '/assets');
+          to = file.newPath.replace(/^tmp\/md5/, assetHost + '/assets/cards/' + name + '/assets');
 
           console.log('testing', file.newPath);
           if (CARD_URL_REGEXP.test(file.newPath)) {
@@ -47,7 +47,7 @@ module.exports = {
 
         if (!manifest.cardUrl) {
           console.error(manifest);
-          throw new Error("Missing cardUrl in: `" + repositoryName + "` manifest");
+          throw new Error("Missing cardUrl in: `" + name + "` manifest");
         }
 
         grunt.file.write('tmp/manifest.json', JSON.stringify(manifest, null, 2));

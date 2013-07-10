@@ -2,16 +2,21 @@ var _ = require('grunt').util._;
 
 module.exports = function(grunt){
   grunt.registerTask('dev_manifest', 'creates manifest.json to be used in development', function() {
-    var shortName = grunt.config.process('<%= pkg.glazierConfig.shortName %>');
+    var name = grunt.config.process('<%= pkg.name %>');
+
+    if (!name) {
+      throw new Error("Missing pkg.name");
+    }
+
     var assetHost = grunt.config.process('<%= pkg.glazierConfig.devAssetHost %>') || 'http://localhost:8000';
 
     var makeAssetUrl = function(filename) {
-      return assetHost + '/cards/' + shortName + '/' + filename;
+      return assetHost + '/cards/' + name + '/' + filename;
     };
 
     // TODO - this should be dynamic.
     var assets = {};
-    assets['cards/' + shortName + '/card.css'] = makeAssetUrl('card.css'); // TODO remove
+    assets['cards/' + name + '/card.css'] = makeAssetUrl('card.css'); // TODO remove
     assets['card.css'] = makeAssetUrl('card.css');
 
     var sharedManifest = require('../shared_manifest.js')(grunt);
@@ -24,6 +29,6 @@ module.exports = function(grunt){
 
     manifest = _.extend({}, manifest, sharedManifest);
 
-    grunt.file.write('dist/dev/' + shortName + '/manifest.json', JSON.stringify(manifest, null, 2));
+    grunt.file.write('dist/dev/' + name + '/manifest.json', JSON.stringify(manifest, null, 2));
   });
 };

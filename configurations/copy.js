@@ -22,7 +22,7 @@ module.exports = {
       {
         expand: true,
         src: ['test/vendor/**/*'],
-        dest: 'dist/dev/<%= pkg.glazierConfig.shortName %>'
+        dest: 'dist/dev/<%= pkg.name %>'
       }
     ]
   },
