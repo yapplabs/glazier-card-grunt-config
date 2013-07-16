@@ -1,9 +1,13 @@
 module.exports = {
   scripts: {
-    files: ['app/**', 'test/**', 'vendor/**', 'templates/**', 'css/*.scss', 'css/*.css'],
+    files: ['app/**', 'test/**', 'vendor/**', 'templates/**'],
     tasks: ['test'],
     options: {
       nospawn: true
     }
+  },
+  styles: {
+  	files: ['stylesheets/*.scss'],
+  	tasks: ['sass']
   }
 };
