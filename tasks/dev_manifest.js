@@ -14,9 +14,7 @@ module.exports = function(grunt){
       return assetHost + '/cards/' + name + '/' + filename;
     };
 
-    // TODO - this should be dynamic.
     var assets = {};
-    assets['cards/' + name + '/card.css'] = makeAssetUrl('card.css'); // TODO remove
     assets['card.css'] = makeAssetUrl('card.css');
 
     var sharedManifest = require('../shared_manifest.js')(grunt);
