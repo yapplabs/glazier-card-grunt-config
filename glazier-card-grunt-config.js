@@ -14,7 +14,7 @@ var config = {
   jshint: config('jshint'),
   transpile: config('transpile'),
   qunit: config('qunit'),
-  ember_handlebars: config('ember_handlebars'),
+  emberTemplates: config('ember_templates'),
   watch: config('watch'),
   sass: config('sass')
 };
@@ -27,7 +27,7 @@ module.exports = {
   },
   registerSharedTasks: function(grunt) {
     registerDevManifestGruntTask(grunt);
-    grunt.registerTask('build', ['clean', 'ember_handlebars', 'transpile', 'jshint', 'copy:main', 'copy:test', 'copy:testVendor', 'sass', 'concat', 'dev_manifest']);
+    grunt.registerTask('build', ['clean', 'emberTemplates', 'transpile', 'jshint', 'copy:main', 'copy:test', 'copy:testVendor', 'sass', 'concat', 'dev_manifest']);
     grunt.registerTask('manifest', ['build', 'md5', 'copy:manifest']);
     grunt.registerTask('deploy', ['manifest', 's3']);
     grunt.registerTask('test', ['build', 'qunit:all']);
