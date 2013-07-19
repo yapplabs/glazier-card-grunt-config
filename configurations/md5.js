@@ -22,6 +22,9 @@ module.exports = {
         name = grunt.config.process('<%= pkg.name %>');
         assetHost = grunt.config.process('<%= pkg.glazierConfig.assetHost %>');
 
+        if (!name)      { throw new Error("Missing: pkg.name") }
+        if (!assetHost) { throw new Error("Missing: pkg.glazierConfig.assetHost"); }
+
         sharedManifest = require('../shared_manifest.js')(grunt);
 
         manifest = {
