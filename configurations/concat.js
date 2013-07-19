@@ -12,7 +12,7 @@ module.exports = {
   },
   testhtml: {
     src: ['tmp/test/index.html'],
-    dest: 'dist/dev/<%= pkg.name  %>/test.html'
+    dest: 'dist/dev/<%= pkg.name %>/test.html'
   },
   css: {
     src: ['tmp/css/style.css'],

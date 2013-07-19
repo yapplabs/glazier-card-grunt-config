@@ -1,4 +1,4 @@
-var cardDest = 'assets/cards/<%= pkg.glazierConfig.repositoryName %>';
+var cardDest = 'assets/cards/<%= pkg.name %>';
 
 module.exports = {
   options: {
