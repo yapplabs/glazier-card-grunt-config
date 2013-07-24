@@ -17,10 +17,11 @@ module.exports = {
       keepBasename: true,
       keepExtension: true,
       after: function (fileChanges, options) {
-        var manifest, sharedManifest, key, file, from, to, name, assetHost;
+        var manifest, sharedManifest, key, file, from, to, name, assetHost, displayName;
 
         name = grunt.config.process('<%= pkg.name %>');
         assetHost = grunt.config.process('<%= pkg.glazierConfig.assetHost %>');
+        displayName = grunt.config.process('<%= pkg.glazierConfig.displayName %>');
 
         if (!name)      { throw new Error("Missing: pkg.name") }
         if (!assetHost) { throw new Error("Missing: pkg.glazierConfig.assetHost"); }
@@ -29,6 +30,7 @@ module.exports = {
 
         manifest = {
           cardUrl: '',
+          displayName: displayName,
           assets: {}
         };
 
