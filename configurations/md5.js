@@ -37,10 +37,11 @@ module.exports = {
         for (key in fileChanges) {
           file = fileChanges[key];
 
-          from = file.oldPath.replace(/^dist\/dev/, '/cards');
+          var fromRegexp =  new RegExp('^dist/dev/' + name + '/');
+
+          from = file.oldPath.replace(fromRegexp, '');
           to = file.newPath.replace(/^tmp\/md5/, assetHost + '/assets/cards/' + name + '/assets');
 
-          console.log('testing', file.newPath);
           if (CARD_URL_REGEXP.test(file.newPath)) {
             manifest.cardUrl = to;
           } else {
