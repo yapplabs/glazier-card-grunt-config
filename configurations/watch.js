@@ -8,6 +8,6 @@ module.exports = {
   },
   styles: {
   	files: ['stylesheets/*.scss'],
-  	tasks: ['sass']
+  	tasks: ['sass', 'concat:css']
   }
 };
