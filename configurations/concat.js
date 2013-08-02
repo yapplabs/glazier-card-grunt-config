@@ -1,6 +1,6 @@
 module.exports = {
   cardjs: {
-    src: ['tmp/**/*.js', '!tmp/test/**/*.js'],
+    src: ['vendor/**/*.js', 'tmp/**/*.js', '!tmp/test/**/*.js'],
     dest: 'dist/dev/<%= pkg.name %>/card.js',
     options: {
       footer: "requireModule('card');"
