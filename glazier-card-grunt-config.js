@@ -11,11 +11,13 @@ var config = {
   copy: config('copy'),
   clean: ["tmp", "dist"],
   concat: config('concat'),
+  symlink: config('symlink'),
   jshint: config('jshint'),
   transpile: config('transpile'),
   qunit: config('qunit'),
   emberTemplates: config('ember_templates'),
   watch: config('watch'),
+  connect: config('connect'),
   sass: config('sass')
 };
 
@@ -27,11 +29,11 @@ module.exports = {
   },
   registerSharedTasks: function(grunt) {
     registerDevManifestGruntTask(grunt);
-    grunt.registerTask('build', ['clean', 'emberTemplates', 'transpile', 'jshint', 'copy:main', 'copy:test', 'copy:testVendor', 'sass', 'concat', 'dev_manifest']);
+    grunt.registerTask('build', ['clean', 'emberTemplates', 'transpile', 'jshint', 'copy:main', 'copy:test', 'copy:testVendor', 'sass', 'concat', 'symlink', 'dev_manifest']);
     grunt.registerTask('manifest', ['build', 'md5', 'copy:manifest']);
     grunt.registerTask('deploy', ['manifest', 's3']);
     grunt.registerTask('test', ['build', 'qunit:all']);
-    grunt.registerTask('autotest', ['watch']);
+    grunt.registerTask('autotest', ['connect', 'watch']);
     grunt.registerTask('default', ['build']);
   }
 };

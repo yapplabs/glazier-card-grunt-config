@@ -41,6 +41,14 @@ Placing the following in your `Gruntfile.js` will give you the standard set of c
     grunt.initConfig(sharedConfig);
     glazierCardGruntConfig.registerSharedTasks(grunt);
 
+### Developing Outside of Glazier
+
+Run `grunt autotest` in your card's repository to start a server hosting only
+your card's tests at `http://localhost:8000`.
+
+Tests that allow themselves to be run in phantom will also automatically run on
+the command line.
+
 ### Tasks
 
   * `build` - copies concatenated assets into dist folder for use in dev

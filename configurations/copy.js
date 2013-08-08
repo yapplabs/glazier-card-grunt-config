@@ -14,6 +14,10 @@ module.exports = {
         expand: true,
         src: ['test/**', '!test/**/*.js'],
         dest: 'tmp'
+      }, {
+        expand: true,
+        src: ['test/css/glazier_card.css'],
+        dest: 'dist/dev/<%= pkg.name %>/'
       }
     ]
   },

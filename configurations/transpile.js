@@ -11,8 +11,9 @@ module.exports = {
     type: "amd",
     files: [{
       expand: true,
-      src: ['test/**/*.js', '!test/vendor/**/*.js'],
-      dest: 'tmp/'
+      cwd: 'test/',
+      src: ['**/*.js', '!vendor/**/*.js'],
+      dest: 'tmp/test/'
     }]
   },
 
