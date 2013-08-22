@@ -17,16 +17,23 @@ module.exports = function(grunt){
     var assets = {};
     assets['card.css'] = makeAssetUrl('card.css');
 
-    var sharedManifest = require('../shared_manifest.js')(grunt);
+    var glazierConfig = grunt.config.process('<%= pkg.glazierConfig %>');
 
     var manifest = {
+      name: grunt.config.process('<%= pkg.name %>'),
       cardUrl: makeAssetUrl('card.js'),
-      displayName: grunt.config.process('<%= pkg.glazierConfig.displayName %>'),
       url: makeAssetUrl('manifest.json'), // The url value is only used by the grunt ingestCard task, and is not used in production
       assets: assets
     };
 
-    manifest = _.extend({}, manifest, sharedManifest);
+    var defaults = {
+      consumes: "",
+      provides: "",
+      ui: "",
+      env: ""
+    };
+
+    manifest = _.extend(defaults, manifest, glazierConfig);
 
     grunt.file.write('dist/dev/' + name + '/manifest.json', JSON.stringify(manifest, null, 2));
   });
