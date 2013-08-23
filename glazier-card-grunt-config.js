@@ -28,7 +28,7 @@ module.exports = {
     return config;
   },
   registerSharedTasks: function(grunt) {
-    registerDevManifestGruntTask(grunt);
+    registerDevManifestGruntTask();
     grunt.registerTask('build', ['clean', 'emberTemplates', 'transpile', 'jshint', 'copy:main', 'copy:test', 'copy:testVendor', 'sass', 'concat', 'symlink', 'dev_manifest']);
     grunt.registerTask('manifest', ['build', 'md5', 'copy:manifest']);
     grunt.registerTask('deploy', ['manifest', 's3']);

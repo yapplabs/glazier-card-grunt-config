@@ -1,6 +1,7 @@
-var _ = require('grunt').util._;
+var grunt = require('grunt'),
+    _ = grunt.util._;
 
-module.exports = function(grunt){
+module.exports = function() {
   grunt.registerTask('dev_manifest', 'creates manifest.json to be used in development', function() {
     var name = grunt.config.process('<%= pkg.name %>');
 
@@ -17,23 +18,12 @@ module.exports = function(grunt){
     var assets = {};
     assets['card.css'] = makeAssetUrl('card.css');
 
-    var glazierConfig = grunt.config.process('<%= pkg.glazierConfig %>');
-
-    var manifest = {
+    var manifest = require('../shared_manifest.js')({
       name: grunt.config.process('<%= pkg.name %>'),
       cardUrl: makeAssetUrl('card.js'),
       url: makeAssetUrl('manifest.json'), // The url value is only used by the grunt ingestCard task, and is not used in production
       assets: assets
-    };
-
-    var defaults = {
-      consumes: "",
-      provides: "",
-      ui: "",
-      env: ""
-    };
-
-    manifest = _.extend(defaults, manifest, glazierConfig);
+    });
 
     grunt.file.write('dist/dev/' + name + '/manifest.json', JSON.stringify(manifest, null, 2));
   });

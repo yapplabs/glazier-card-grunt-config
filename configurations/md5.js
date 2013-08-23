@@ -26,15 +26,11 @@ module.exports = {
         if (!name)      { throw new Error("Missing: pkg.name") }
         if (!assetHost) { throw new Error("Missing: pkg.glazierConfig.assetHost"); }
 
-        sharedManifest = require('../shared_manifest.js')(grunt);
-
-        manifest = {
+        manifest = require('../shared_manifest.js')({
           cardUrl: '',
           displayName: displayName,
           assets: {}
-        };
-
-        manifest = _.extend({}, manifest, sharedManifest);
+        });
 
         for (key in fileChanges) {
           file = fileChanges[key];
