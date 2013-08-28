@@ -31,6 +31,7 @@ module.exports = {
         manifest = require(file)({
           cardUrl: '',
           displayName: displayName,
+          name: name,
           assets: {}
         });
 
