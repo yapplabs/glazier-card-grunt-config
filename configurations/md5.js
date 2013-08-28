@@ -1,4 +1,5 @@
 var grunt = require('grunt');
+var path = require('path');
 var _ = grunt.util._;
 var CARD_URL_REGEXP = /card-[\w\d]{32}\.js$/;
 
