@@ -1,7 +1,7 @@
 var grunt = require('grunt');
 var path = require('path');
 var _ = grunt.util._;
-var CARD_URL_REGEXP = /card-[\w\d]{32}\.js$/;
+var CARD_URL_REGEXP = /tmp\/md5\/card-[\w\d]{32}\.js$/;
 
 module.exports = {
   compile: {
@@ -43,6 +43,7 @@ module.exports = {
           from = file.oldPath.replace(fromRegexp, '');
           to = file.newPath.replace(/^tmp\/md5/, assetHost + '/assets/cards/' + name + '/assets');
 
+          console.log('testing ' + file.newPath);
           if (CARD_URL_REGEXP.test(file.newPath)) {
             manifest.cardUrl = to;
           } else {
